@@ -1,9 +1,15 @@
 import "./App.css";
-
+import  NavBar  from "./component/NavBar";
+import { Outlet } from "react-router";
 function App() {
-  return <div className="bg-red-600 text-center hover:bg-blue-500">
-    Hello ji kaise ho app
-  </div>
+  return (
+    <div>
+      <div>
+        <NavBar />
+        <Outlet />
+      </div>
+    </div>
+  );
 }
 
 export default App;
