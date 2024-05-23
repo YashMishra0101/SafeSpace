@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase/FirebaseConfig";
 import Footer from "../component/Footer";
 
 const Login = () => {
@@ -12,20 +10,14 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      localStorage.setItem("user", JSON.stringify(userCredential.user));
+
+    if (email === "test@example.com" && password === "password") {
       toast.success("Login Successful");
       navigate("/");
-    } catch (error) {
+    } else {
       toast.error("Invalid email or password");
-      console.log(`Login failed: ${error.message}`);
     }
   };
 

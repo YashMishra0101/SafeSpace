@@ -1,37 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
-import { auth, fireDb } from "../firebase/FirebaseConfig";
+import React, { useState } from "react";
 import imagethree from "../assets/imageOne.png";
 import imageOne from "../assets/Designer.png";
 import imageTwo from "../assets/positive.png";
 import Footer from "../component/Footer";
 
 const Home = () => {
-  const [userName, setUserName] = useState("");
-
-  useEffect(() => {
-    const fetchUserName = async (userId) => {
-      try {
-        const userDoc = await getDoc(doc(fireDb, "users", userId));
-        if (userDoc.exists()) {
-          setUserName(userDoc.data().name);
-        }
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
-
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        fetchUserName(user.uid);
-      } else {
-        setUserName("");
-      }
-    });
-
-    return () => unsubscribe();
-  }, []);
+  const [userName, setUserName] = useState(""); // Manage username manually
 
   return (
     <div className="bg-gray-100 min-h-screen">

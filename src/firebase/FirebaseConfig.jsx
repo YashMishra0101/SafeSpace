@@ -1,18 +1,18 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-const API_KEY = import.meta.env.VITE_Firebase_API_KEY;
+import {getAuth} from "firebase/auth"
+// import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: API_KEY,
-  authDomain: "safespace-ea9fb.firebaseapp.com",
-  projectId: "safespace-ea9fb",
-  storageBucket: "safespace-ea9fb.appspot.com",
-  messagingSenderId: "37352424569",
-  appId: "1:37352424569:web:6a7c161b39f6b8c57f00a8",
+  apiKey: "AIzaSyCQLJ0R67UnlEtQG6uciJfUpASSnI5Rz9s",
+  authDomain: "test-7e43f.firebaseapp.com",
+  projectId: "test-7e43f",
+  storageBucket: "test-7e43f.appspot.com",
+  messagingSenderId: "891259589522",
+  appId: "1:891259589522:web:d21e7921e57ed6d293a74b",
+//   measurementId: "G-6863F5K8G4"
 };
 
+
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const fireDb = getFirestore(app);
-export { auth, fireDb };
+export const auth =getAuth(app)
+// const analytics = getAnalytics(app);

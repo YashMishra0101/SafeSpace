@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
-import { auth, fireDb } from "../firebase/FirebaseConfig";
 import { useNavigate } from "react-router";
 import Footer from "../component/Footer";
 
@@ -34,28 +31,14 @@ const SignUp = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSignUp = (e) => {
     e.preventDefault();
     const { name, email, password, confirmPassword } = formData;
 
     if (password === confirmPassword) {
       try {
-        // Create user with email and password
-        const userCredential = await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-        const userUID = userCredential.user.uid;
-
-        const uniqueID = email.split("@")[0];
-
-        await setDoc(doc(fireDb, "users", userUID), {
-          name: name,
-          email: email,
-          uniqueID: uniqueID,
-        });
-
+        
+        console.log(`User registered with email: ${email}`);
         toast.success("Signup Successful");
         navigate("/");
       } catch (error) {
@@ -71,7 +54,7 @@ const SignUp = () => {
     <div>
       <div className="flex justify-center items-center h-screen bg-gray-100 ">
         <form
-          onSubmit={handleSubmit}
+          onSubmit={handleSignUp}
           className="max-w-md w-full px-6 py-8 border border-gray-300 rounded-lg shadow-md bg-white relative md:-top-10"
         >
           <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
@@ -144,7 +127,7 @@ const SignUp = () => {
         </form>
       </div>
       <div className="md:-mt-40">
-      <Footer />
+        <Footer />
       </div>
     </div>
   );

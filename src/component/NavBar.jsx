@@ -1,26 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { NavLink, useNavigate ,Link } from "react-router-dom";
-import { signOut, onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase/FirebaseConfig";
+import React, { useState } from "react";
+import { NavLink, useNavigate, Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import logo from "../assets/logo.png";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Manage logged-in state manually
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setIsLoggedIn(!!user);
-      if (user) {
-        localStorage.setItem("user", JSON.stringify(user));
-      } else {
-        localStorage.removeItem("user");
-      }
-    });
-    return () => unsubscribe();
-  }, []);
 
   const toggleMenu = () => {
     setIsOpen((prevState) => !prevState);
@@ -31,18 +17,11 @@ const NavBar = () => {
   };
 
   const logout = () => {
-    signOut(auth)
-      .then(() => {
-        setIsLoggedIn(false);
-        localStorage.removeItem("user");
-        closeMenu();
-        toast.success("Logout Successful");
-        navigate("/");
-      })
-      .catch((error) => {
-        console.error("Logout failed:", error);
-        toast.error("Logout failed. Please try again.");
-      });
+    // Implement your logout logic here
+    setIsLoggedIn(false);
+    closeMenu();
+    toast.success("Logout Successful");
+    navigate("/");
   };
 
   const handleMenuItemClick = () => {
@@ -53,7 +32,7 @@ const NavBar = () => {
     <nav className="bg-purple-600 p-4">
       <div className="container mx-auto flex justify-between items-center">
         <span className="flex items-center space-x-3">
-          <Link href="/" onClick={handleMenuItemClick}>
+          <Link to="/" onClick={handleMenuItemClick}>
             <img src={logo} className="h-8" alt="SafeSpace Logo" />
           </Link>
           <Link to="/" onClick={handleMenuItemClick}>
