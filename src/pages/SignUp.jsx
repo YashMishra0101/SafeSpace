@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { auth, fireDb } from "../firebase/FirebaseConfig";
 import { useNavigate } from "react-router";
 import Footer from "../component/Footer";
 
@@ -31,22 +34,33 @@ const SignUp = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
-  const handleSignUp = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const { name, email, password, confirmPassword } = formData;
 
     if (password === confirmPassword) {
       try {
-        
-        console.log(`User registered with email: ${email}`);
+        // Create user with email and password
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        const userUID = userCredential.user.uid;
+
+        await setDoc(doc(fireDb, "users", userUID), {
+          name: name,
+          email: email,
+        });
+
         toast.success("Signup Successful");
         navigate("/");
       } catch (error) {
-        toast.error("Enter Valid Detail");
+        toast.error("Enter Valid Details");
         console.error(`Signup failed: ${error.message}`);
       }
     } else {
-      toast.error("Password not matched");
+      toast.error("Passwords do not match");
     }
   };
 
@@ -54,7 +68,7 @@ const SignUp = () => {
     <div>
       <div className="flex justify-center items-center h-screen bg-gray-100 ">
         <form
-          onSubmit={handleSignUp}
+          onSubmit={handleSubmit}
           className="max-w-md w-full px-6 py-8 border border-gray-300 rounded-lg shadow-md bg-white relative md:-top-10"
         >
           <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
@@ -127,7 +141,7 @@ const SignUp = () => {
         </form>
       </div>
       <div className="md:-mt-40">
-        <Footer />
+      <Footer />
       </div>
     </div>
   );
