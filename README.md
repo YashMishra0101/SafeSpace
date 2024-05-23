@@ -23,7 +23,7 @@ To see a live demo of the project, please visit : https://safespaces.netlify.app
 - Tailwind CSS
 - React
 - React Router
-- Axios
+- Firebase
 
 
 ## Contributing
