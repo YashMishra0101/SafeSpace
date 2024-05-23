@@ -1,17 +1,45 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { auth, fireDb } from "../firebase/FirebaseConfig";
 import imagethree from "../assets/imageOne.png";
 import imageOne from "../assets/Designer.png";
 import imageTwo from "../assets/positive.png";
 import Footer from "../component/Footer";
 
 const Home = () => {
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    const fetchUserName = async (userId) => {
+      try {
+        const userDoc = await getDoc(doc(fireDb, "users", userId));
+        if (userDoc.exists()) {
+          setUserName(userDoc.data().name);
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        fetchUserName(user.uid);
+      } else {
+        setUserName("");
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   return (
     <div className="bg-gray-100 min-h-screen">
       <header className="text-center pt-6">
         <h1 className="text-4xl md:text-5xl font-bold text-purple-600">
-          We Care About You
+          {userName ? `${userName}, we care about you.` : "We Care About You"}
         </h1>
-        <p className="text-md md:text-lg text-gray-700 mt-4">
+        <p className="text-d md:text-lg text-gray-700 mt-4">
           Support is just a call away. Reach out. You are not alone.
         </p>
       </header>

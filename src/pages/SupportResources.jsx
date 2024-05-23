@@ -109,14 +109,14 @@ const SupportResources = () => {
 
   return (
     <div className="container mx-auto px-4">
-      <h1 className="text-3xl font-semibold text-center mt-8 mb-6">
-        Support Resources for Suicide Prevention
+      <h1 className="text-4xl font-bold text-center mt-8 mb-8 text-purple-600 ">
+        Support Resources for Suicide Prevention 
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {articles.map((article) => (
           <div
             key={article.id}
-            className="bg-white p-6 rounded-lg shadow-md transition duration-300 hover:bg-gray-100"
+            className="bg-white border-2 p-6 rounded-lg shadow-md transition duration-300 hover:bg-purple-100 cursor-pointer"
           >
             <h2 className="text-xl font-semibold text-purple-600 mb-4">
               {article.title}

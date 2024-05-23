@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink, useNavigate ,Link } from "react-router-dom";
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase/FirebaseConfig";
-import { toast } from 'react-hot-toast';
+import { toast } from "react-hot-toast";
 import logo from "../assets/logo.png";
-import { useNavigate } from "react-router";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +34,7 @@ const NavBar = () => {
     signOut(auth)
       .then(() => {
         setIsLoggedIn(false);
-        localStorage.clear("user");
+        localStorage.removeItem("user");
         closeMenu();
         toast.success("Logout Successful");
         navigate("/");
@@ -54,7 +53,7 @@ const NavBar = () => {
     <nav className="bg-purple-600 p-4">
       <div className="container mx-auto flex justify-between items-center">
         <span className="flex items-center space-x-3">
-          <Link to="/" onClick={handleMenuItemClick}>
+          <Link href="/" onClick={handleMenuItemClick}>
             <img src={logo} className="h-8" alt="SafeSpace Logo" />
           </Link>
           <Link to="/" onClick={handleMenuItemClick}>
@@ -87,69 +86,69 @@ const NavBar = () => {
           } md:block absolute md:relative top-[3rem] right-0 md:top-0 md:right-auto bg-purple-600 md:bg-transparent w-full md:w-auto text-left md:text-left`}
         >
           <li className="border-t border-purple-400 md:border-0">
-            <Link
+            <NavLink
               to="/"
               className="block px-4 py-2 text-white hover:underline"
               onClick={handleMenuItemClick}
             >
               Home
-            </Link>
+            </NavLink>
           </li>
           <li className="border-t border-purple-400 md:border-0">
-            <Link
+            <NavLink
               to="/emergencycontacts"
               className="block px-4 py-2 text-white hover:underline"
               onClick={handleMenuItemClick}
             >
               Emergency Contacts
-            </Link>
+            </NavLink>
           </li>
           <li className="border-t border-purple-400 md:border-0">
-            <Link
+            <NavLink
               to="/supportresources"
               className="block px-4 py-2 text-white hover:underline"
               onClick={handleMenuItemClick}
             >
               Support Resources
-            </Link>
+            </NavLink>
           </li>
           <li className="border-t border-purple-400 md:border-0">
-            <Link
+            <NavLink
               to="/reachout"
               className="block px-4 py-2 text-white hover:underline"
               onClick={handleMenuItemClick}
             >
               Reach Out
-            </Link>
+            </NavLink>
           </li>
           <li className="border-t border-purple-400 md:border-0">
-            <Link
+            <NavLink
               to="/about"
               className="block px-4 py-2 text-white hover:underline"
               onClick={handleMenuItemClick}
             >
               About
-            </Link>
+            </NavLink>
           </li>
           {!isLoggedIn && (
             <>
               <li className="border-t border-purple-400 md:border-0">
-                <Link
+                <NavLink
                   to="/login"
                   className="block px-4 py-2 text-white hover:underline"
                   onClick={handleMenuItemClick}
                 >
                   Login
-                </Link>
+                </NavLink>
               </li>
               <li className="border-t border-purple-400 md:border-0">
-                <Link
+                <NavLink
                   to="/signup"
                   className="block px-4 py-2 text-white hover:underline"
                   onClick={handleMenuItemClick}
                 >
                   Sign Up
-                </Link>
+                </NavLink>
               </li>
             </>
           )}
