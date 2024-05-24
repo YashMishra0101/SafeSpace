@@ -142,7 +142,7 @@ const SupportResources = () => {
           </div>
         ))}
       </div>
-   <div className="mt-9 mb-2">
+   <div className="mt-9">
    <Footer/>
    </div>
     </div>

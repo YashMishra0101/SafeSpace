@@ -131,7 +131,7 @@ const ReachOut = () => {
           </div>
         </div>
       </div>
-      <div className="mt-10 -mb-1">
+      <div className="mt-10 -mb-4">
         <Footer />
       </div>
     </div>

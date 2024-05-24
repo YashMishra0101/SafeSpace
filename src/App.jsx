@@ -4,8 +4,8 @@ import { Outlet } from "react-router";
 function App() {
   return (
     <div>
-      <div>
-        <NavBar />
+      <div className="z-50" >
+        <NavBar/>
         <Outlet />
       </div>
     </div>

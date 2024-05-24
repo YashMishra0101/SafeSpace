@@ -2,13 +2,35 @@ import React, { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, fireDb } from "../firebase/FirebaseConfig";
-import imagethree from "../assets/imageOne.png";
 import imageOne from "../assets/Designer.png";
 import imageTwo from "../assets/positive.png";
+import imagethree from "../assets/imageOne.png";
+import imagefour from "../assets/imagefour.png";
 import Footer from "../component/Footer";
+import carsoul1 from "../assets/Carousel1.png";
+import carsoul2 from "../assets/Carousel2.png";
+import carsoul3 from "../assets/Carousel3.png";
+import carsoul4 from "../assets/Carousel4.png";
+import carsoul5 from "../assets/Carousel5.png";
 
 const Home = () => {
   const [userName, setUserName] = useState("");
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentSlide((currentSlide + 1) % 5);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((currentSlide - 1 + 5) % 5);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [currentSlide]);
 
   useEffect(() => {
     const fetchUserName = async (userId) => {
@@ -34,7 +56,79 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-gray-100 min-h-screen -z-30">
+      {/* Carousel started */}
+      <div
+        id="default-carousel"
+        className="relative h-[450px] overflow-hidden -mb-72 md:mb-0"
+        data-carousel="slide"
+      >
+        <div className="relative h-full overflow-hidden">
+          <div
+            className="duration-700 ease-in-out absolute w-full flex"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
+            <img
+              src={carsoul1}
+              className="w-full h-full object-cover"
+              alt="..."
+            />
+            <img
+              src={carsoul2}
+              className="w-full h-full object-cover"
+              alt="..."
+            />
+            <img
+              src={carsoul3}
+              className="w-full h-full object-cover"
+              alt="..."
+            />
+            <img
+              src={carsoul4}
+              className="w-full h-full object-cover"
+              alt="..."
+            />
+            <img
+              src={carsoul5}
+              className="w-full h-full object-cover"
+              alt="..."
+            />
+          </div>
+        </div>
+
+        <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse hidden md:block">
+          {[...Array(5)].map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              className={`w-3 h-3 rounded-full ${
+                index === currentSlide ? "bg-black" : "bg-gray-300"
+              }`}
+              aria-current={index === currentSlide ? "true" : "false"}
+              aria-label={`Slide ${index + 1}`}
+              onClick={() => setCurrentSlide(index)}
+            ></button>
+          ))}
+        </div>
+
+        <button
+          type="button"
+          className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+          data-carousel-prev
+          onClick={prevSlide}
+        >
+          {/* Previous button icon */}
+        </button>
+        <button
+          type="button"
+          className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+          data-carousel-next
+          onClick={nextSlide}
+        >
+          {/* Next button icon */}
+        </button>
+      </div>
+      {/* Carousel ends */}
       <header className="text-center pt-6">
         <h1 className="text-4xl md:text-5xl font-bold text-purple-600">
           {userName ? `${userName}, we care about you.` : "We Care About You"}
@@ -123,6 +217,34 @@ const Home = () => {
             alt="We Are With You"
             className="w-full h-auto rounded-lg"
           />
+        </div>
+      </div>
+      <div className="flex flex-col md:flex-row items-center justify-center p-4 mt-8 mb-5">
+        <div className="md:w-[30rem] w-[20rem] px-4">
+          <img
+            src={imagefour}
+            alt="We Are With You"
+            className="w-full h-auto rounded-lg"
+          />
+        </div>
+        <div className="w-full md:w-1/2 px-4">
+          <section className="text-center md:text-left">
+            <h2 className="text-xl md:text-4xl font-semibold text-purple-600 mb-4">
+              Stay Strong
+            </h2>
+            <p className="text-gray-700 mb-2 md:text-lg">
+              Life can throw unexpected challenges our way, but remember that
+              within you lies the strength to overcome anything. Embrace your
+              resilience and courage, and know that with each step, you're
+              becoming stronger.
+            </p>
+            <p className="text-gray-700 md:text-lg">
+              Surround yourself with positivity, lean on your support system,
+              and never lose sight of your goals. We're here to walk this
+              journey with you, offering support and encouragement every step
+              of the way.
+            </p>
+          </section>
         </div>
       </div>
       <Footer />

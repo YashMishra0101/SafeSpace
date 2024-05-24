@@ -5,3 +5,4 @@ export {default as Login } from "../pages/Login.jsx";
 export {default as ReachOut } from "../pages/ReachOut.jsx";
 export {default as SignUp } from "../pages/SignUp.jsx";
 export {default as SupportResources } from "../pages/SupportResources.jsx";
+export {default as  VideosHelp} from "../pages/VideosHelp.jsx";

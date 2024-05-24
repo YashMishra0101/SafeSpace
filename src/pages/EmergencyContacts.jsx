@@ -166,7 +166,7 @@ const EmergencyContacts = () => {
           </div>
         </div>
       </div>
-      <div className="mt-5 -mb-1">
+      <div className="mt-5 -mb-4">
         <Footer />
       </div>
     </div>

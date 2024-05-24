@@ -29,7 +29,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="bg-purple-600 p-4">
+    <nav className="bg-purple-600 p-4 z-50">
       <div className="container mx-auto flex justify-between items-center">
         <span className="flex items-center space-x-3">
           <Link to="/" onClick={handleMenuItemClick}>
@@ -75,15 +75,6 @@ const NavBar = () => {
           </li>
           <li className="border-t border-purple-400 md:border-0">
             <NavLink
-              to="/emergencycontacts"
-              className="block px-4 py-2 text-white hover:underline"
-              onClick={handleMenuItemClick}
-            >
-              Emergency Contacts
-            </NavLink>
-          </li>
-          <li className="border-t border-purple-400 md:border-0">
-            <NavLink
               to="/supportresources"
               className="block px-4 py-2 text-white hover:underline"
               onClick={handleMenuItemClick}
@@ -93,11 +84,29 @@ const NavBar = () => {
           </li>
           <li className="border-t border-purple-400 md:border-0">
             <NavLink
+              to="/videoHelp"
+              className="block px-4 py-2 text-white hover:underline"
+              onClick={handleMenuItemClick}
+            >
+              Videos Help
+            </NavLink>
+          </li>
+          <li className="border-t border-purple-400 md:border-0">
+            <NavLink
               to="/reachout"
               className="block px-4 py-2 text-white hover:underline"
               onClick={handleMenuItemClick}
             >
               Reach Out
+            </NavLink>
+          </li>
+          <li className="border-t border-purple-400 md:border-0">
+            <NavLink
+              to="/emergencycontacts"
+              className="block px-4 py-2 text-white hover:underline"
+              onClick={handleMenuItemClick}
+            >
+              Emergency Contacts
             </NavLink>
           </li>
           <li className="border-t border-purple-400 md:border-0">

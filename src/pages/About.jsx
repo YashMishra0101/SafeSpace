@@ -23,7 +23,7 @@ const AboutUs = () => {
           </p>
         </div>
       </div>
-      <div className='mt-10 -mb-5'>
+      <div className='mt-10 -mb-8'>
       <Footer/>
       </div>
     </div>

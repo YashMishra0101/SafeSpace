@@ -8,7 +8,7 @@ const Footer = () => {
           <div className="mb-6 md:mb-0 md:w-1/3 ">
             <h2 className="text-xl font-semibold mb-2">SafeSpace</h2>
             <p className="text-sm">Email: info@safespace.com</p>
-            <p className="text-sm">Phone: +123 456 7890</p>
+            <p className="text-sm">Phone: +9234567890</p>
           </div>
           <div className="mb-6 md:mb-0 md:w-1/3">
             <h2 className="text-lg font-semibold mb-2">Quick Links</h2>

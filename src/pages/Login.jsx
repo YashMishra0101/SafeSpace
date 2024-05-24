@@ -35,7 +35,7 @@ const Login = () => {
 
   return (
     <div>
-      <div className="container mx-auto mt-28 max-w-md w-full px-6 py-8 border border-gray-300 rounded-lg shadow-md bg-white">
+      <div className="container mx-auto mt-24 max-w-md w-full px-6 py-8 border border-gray-300 rounded-lg shadow-md bg-white">
         <h1 className="text-3xl font-semibold text-center mb-6">Login</h1>
         <form onSubmit={handleSubmit} className="max-w-md mx-auto">
           <div className="mb-4">

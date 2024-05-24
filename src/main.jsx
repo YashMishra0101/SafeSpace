@@ -13,6 +13,7 @@ import {
   ReachOut,
   SignUp,
   SupportResources,
+  VideosHelp
 } from "./component/index.js";
 
 import {
@@ -29,6 +30,7 @@ const router = createBrowserRouter(
       <Route path="/about" element={<About />} />
       <Route path="emergencycontacts" element={<EmergencyContacts />} />
       <Route path="supportresources" element={<SupportResources/>} />
+      <Route path="videoHelp" element={<VideosHelp/>} />
       <Route path="login" element={<Login />} />
       <Route path="reachout" element={<ReachOut />} />
       <Route path="signup" element={<SignUp />} />
