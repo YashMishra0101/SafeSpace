@@ -56,7 +56,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="bg-gray-100 min-h-screen -z-30">
+    <div className="bg-gray-100 min-h-screen">
       {/* Carousel started */}
       <div
         id="default-carousel"

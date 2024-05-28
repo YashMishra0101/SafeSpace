@@ -140,7 +140,7 @@ const SignUp = () => {
           </div>
         </form>
       </div>
-      <div className="md:-mt-40">
+      <div className="md:-mt-32">
       <Footer />
       </div>
     </div>
