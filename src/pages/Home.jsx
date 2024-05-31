@@ -129,7 +129,7 @@ const Home = () => {
         </button>
       </div>
       {/* Carousel ends */}
-      <header className="text-center pt-6">
+      <header className="text-center lg:mt-5 sm:mt-10 md:mt-0 mt-12">
         <h1 className="text-4xl md:text-5xl font-bold text-purple-600">
           {userName ? `${userName}, we care about you.` : "We Care About You"}
         </h1>
