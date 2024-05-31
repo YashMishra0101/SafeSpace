@@ -131,7 +131,7 @@ const Home = () => {
       {/* Carousel ends */}
       <header className="text-center lg:mt-5 sm:mt-10 md:mt-0 mt-12">
         <h1 className="text-4xl md:text-5xl font-bold text-purple-600">
-          {userName ? `${userName}, we care about you.` : "We Care About You"}
+          {userName ? `${userName}, we care for you.` : "We Care For You"}
         </h1>
         <p className="text-d md:text-lg text-gray-700 mt-4">
           Support is just a call away. Reach out. You are not alone.
