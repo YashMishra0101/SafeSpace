@@ -67,7 +67,7 @@ const Footer = () => {
         </div>
         <div className="text-center mt-8">
           <p className="text-base">
-            &copy; {new Date().getFullYear()} SafeSpace. All rights reserved.
+            2024 SafeSpace. All rights reserved.
           </p>
         </div>
       </div>
