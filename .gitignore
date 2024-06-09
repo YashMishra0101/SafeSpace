@@ -24,5 +24,11 @@ dist-ssr
 *.sw?
 *.env
 *.src\pages\SupportResources.jsx
+*.src\pages\VideosHelp.jsx
+*.src\pages\EmergencyContacts.jsx
+*.src\pages\Login.jsx
+*.src\component\index.js
+*.src\main.jsx
+
 
 
