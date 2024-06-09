@@ -1,5 +1,7 @@
 # SafeSpace
 
+**Note:** The full code is not available on GitHub because I don't want to reveal all my code here. If anyone wants the full code, you can contact me.
+
 <img src="src/assets/Screenshot (405).png">
 
 <img src="src/assets/Screenshot (406).png">
