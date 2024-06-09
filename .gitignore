@@ -26,5 +26,6 @@ dist-ssr
 .VideosHelp.jsx
 .ReachOut.jsx
 .EmergencyContacts.jsx
-
+.index.jsx
+.main.jsx
 
