@@ -1,6 +1,6 @@
 # SafeSpace
 
-**Note:** The full code is not available on GitHub because I prefer not to reveal all my code here. If you would like access to the full code, please contact me directly. You can still use the live link to view the entire website
+**Note✋🖐️:** The full code is not available on GitHub because I prefer not to reveal all my code here. If you would like access to the full code, please contact me directly. You can still use the live link to view the entire website.
 
 <img src="src/assets/Screenshot (405).png">
 
