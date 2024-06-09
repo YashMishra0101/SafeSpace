@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.SupportResources.jsx
+.VideosHelp.jsx
+.ReachOut.jsx
+.EmergencyContacts.jsx
+
+
